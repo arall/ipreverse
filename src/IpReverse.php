@@ -44,8 +44,8 @@ class IpReverse
     /**
      * Query resolver switcher
      *
-     * @param  string $server
-     * @return bool
+     * @param  string  $server
+     * @return boolean
      */
     private function execute($server)
     {
@@ -90,6 +90,8 @@ class IpReverse
 
             return true;
         }
+
+        return false
     }
 
     /**
@@ -118,5 +120,7 @@ class IpReverse
 
             return true;
         }
+
+        return false
     }
 }
