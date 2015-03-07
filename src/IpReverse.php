@@ -34,11 +34,13 @@ class IpReverse
             $this->ip = $ip;
 
             // Run
-            return $this->execute($server);
-        }
+            $this->execute($server);
 
-        // Invalid domain
-        throw new \InvalidArgumentException('Invalid IP');
+        } else {
+
+            // Invalid domain
+            throw new \InvalidArgumentException('Invalid IP');
+        }
     }
 
     /**
@@ -53,14 +55,15 @@ class IpReverse
         curl_setopt($ch, CURLOPT_RETURNTRANSFER,    true);
         curl_setopt($ch, CURLOPT_USERAGENT,         'Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/32.0.1700.41 Safari/537.36');
         curl_setopt($ch, CURLOPT_AUTOREFERER,       true);
+
         switch ($server) {
+
             default:
             case 'bing':
                 return $this->executeBing($ch);
-            break;
+
             case 'hurricane':
                 return $this->executeHurricane($ch);
-            break;
         }
 
         return false;
