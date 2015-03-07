@@ -7,7 +7,7 @@ libxml_use_internal_errors(true);
 $ipReverse = new Arall\IpReverse(isset($argv[1]) ? $argv[1] : '69.50.225.155');
 
 $hosts = $ipReverse->hosts;
-if ($hosts && !empty($hosts)) {
+if (is_array($hosts) && !empty($hosts)) {
     echo 'Hosts: ' . implode("\n", $hosts). PHP_EOL;
 } else {
     echo 'No hosts found'. PHP_EOL;
