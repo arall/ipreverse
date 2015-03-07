@@ -94,7 +94,7 @@ class IpReverse
             return true;
         }
 
-        return false
+        return false;
     }
 
     /**
@@ -124,6 +124,6 @@ class IpReverse
             return true;
         }
 
-        return false
+        return false;
     }
 }
