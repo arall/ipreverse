@@ -2,7 +2,7 @@
 
 namespace Arall;
 
-class IpReverse
+class IPReverse
 {
     /**
 	 * IP
