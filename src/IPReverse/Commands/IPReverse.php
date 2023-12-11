@@ -2,6 +2,7 @@
 
 namespace Arall\IPReverse\Commands;
 
+use Exception;
 use Symfony\Component\Console\Command\Command;
 use Symfony\Component\Console\Input\InputArgument;
 use Symfony\Component\Console\Input\InputInterface;
@@ -33,16 +34,16 @@ class IPReverse extends Command
 
     public function execute(InputInterface $input, OutputInterface $output)
     {
-        $ip = $input->getArgument('ip');
-        $service = $input->getArgument('service') ?: 'bing';
-
         try {
-            $ipReverse = new Tool($ip, $service);
-        } catch (\Exception $e) {
+            $ipReverse = new Tool($input->getArgument('ip'));
+            // Run
+
+            $hosts = $ipReverse->execute($input->getArgument('service') ?: 'bing');
+        } catch (Exception $e) {
+
             return $output->writeln('<error>'.$e->getMessage().'</error>');
         }
 
-        $hosts = $ipReverse->hosts;
         if (!empty($hosts)) {
             foreach ($hosts as $host) {
                 $output->writeln($host);

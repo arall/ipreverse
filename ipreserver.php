@@ -14,4 +14,8 @@ $app = new Application('IP Reverse', '1.0');
 
 $app->add(new Arall\IPReverse\Commands\IPReverse());
 
-$app->run();
+try {
+    $app->run();
+} catch (Exception $e) {
+    die($e->getMessage());
+}
